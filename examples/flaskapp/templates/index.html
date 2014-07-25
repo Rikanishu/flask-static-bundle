@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flask Static Example</title>
+    {{statics.render_include_group("Styles")|safe}}
+</head>
+<body>
+<div class="page-container ng-cloak">
+    <h3>Static Test</h3>
+    <p>The following static files render on this page:</p>
+    {% for name, group in statics.build_groups.items() %}
+    <h4>{{name}}</h4>
+    <ul>
+        {% for f in group.files %}
+            <li>
+                [ {{f.type}} ] {{f.rel_path}}
+            </li>
+        {% endfor %}
+    </ul>
+    {% endfor %}
+    <p>Try to run another environment: <i>python run.py production</i> or <i>python run.py development</i></p>
+    <p>Don't forget run <i>python collectstatic.py production</i> before production env test</p>
+</div>
+{{statics.render_include_group("Vendors")|safe}}
+{{statics.render_include_group("Application")|safe}}
+</body>
+</html>
