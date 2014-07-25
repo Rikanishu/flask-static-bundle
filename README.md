@@ -1,5 +1,6 @@
 # flask-static-bundle #
 **Flask extension for [static-bundle](http://github.com/rikanishu/static-bundle)**
+
 ---
 
 ### Installation ###
