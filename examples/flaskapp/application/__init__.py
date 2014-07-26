@@ -11,18 +11,10 @@ sys.path.append(PACKAGE_ROOT)
 
 from flask import Flask
 
-ROOT_PATH = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
-APP_PATH = os.path.join(ROOT_PATH, "application")
-
-PUBLIC_STATIC_PATH = os.path.join(ROOT_PATH, "public")
-SRC_PATH = os.path.join(PUBLIC_STATIC_PATH, "src")
-BUILD_PATH = os.path.join(PUBLIC_STATIC_PATH, "build")
-
-
 class ProdConf:
     DEBUG = False
-    STATIC_BUNDLE_INPUT_PATH = SRC_PATH
-    STATIC_BUNDLE_OUTPUT_PATH = BUILD_PATH
+    STATIC_BUNDLE_INPUT_PATH = "public/src"
+    STATIC_BUNDLE_OUTPUT_PATH = "public/build"
     STATIC_BUNDLE_ENV = "production"
     STATIC_BUNDLE_REWRITE = False
 
