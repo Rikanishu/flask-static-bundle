@@ -7,7 +7,7 @@
 
 Via pip:
 ```
-    pip install git+https://github.com/rikanishu/flask-static-bundle.git
+    pip install flask-static-bundle
 ```
 or from sources
 ```

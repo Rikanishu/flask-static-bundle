@@ -12,7 +12,7 @@ setup(
     license='MIT',
     description='Flask extension for static-bundle',
     url='http://github.com/Rikanishu/flask-static-bundle',
-    download_url='https://github.com/Rikanishu/static-bundle/tarball',
+    download_url='https://github.com/Rikanishu/flask-static-bundle/archive/master.zip',
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'License :: OSI Approved :: BSD License',
