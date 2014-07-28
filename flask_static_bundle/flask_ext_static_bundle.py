@@ -49,7 +49,7 @@ class StaticManager(object):
             @app.route('/' + rewrite_path + '/<path:filename>')
             def rewrite_static(filename):
                 cache_timeout = app.get_send_file_max_age(filename)
-                return send_from_directory(os.path.join(static_path, rewrite_path), filename,
+                return send_from_directory(BuilderConfig.init_path(os.path.join(static_path, rewrite_path)), filename,
                                            cache_timeout=cache_timeout)
 
     @property

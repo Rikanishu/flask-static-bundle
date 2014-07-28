@@ -8,7 +8,6 @@ from static_bundle import (JsBundle,
 css1 = CssBundle("static/css")
 css1.add_file("example1.less")
 css1.add_file("example2.css")
-css1.add_prepare_handler(LessCompilerPrepareHandler())
 
 js1 = JsBundle("static/js")
 js1.add_file("vendors/example1.js")
