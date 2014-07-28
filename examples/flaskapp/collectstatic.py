@@ -6,3 +6,4 @@
 if __name__ == "__main__":
     from application.static import builder
     builder.make_build()
+    print("Done")

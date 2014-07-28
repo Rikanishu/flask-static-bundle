@@ -28,4 +28,4 @@ This option required creating app with option `static_folder=None`:
 ```
 app = Flask(__name__, static_folder=None)
 ```
- - `STATIC_BUNDLE_REWRITE_URL` - Url for static rewrite, "/static/<filename>" by default
+ - `STATIC_BUNDLE_PREFIX_URL` - Url for static rewrite, "/static/" by default (right slash required)

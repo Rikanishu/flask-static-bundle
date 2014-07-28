@@ -17,7 +17,8 @@ class FlaskBuilderConfig(BuilderConfig):
         self.app = app
         super(FlaskBuilderConfig, self).__init__(input_dir=app.config.get('STATIC_BUNDLE_INPUT_PATH'),
                                                  output_dir=app.config.get('STATIC_BUNDLE_OUTPUT_PATH'),
-                                                 env=app.config.get('STATIC_BUNDLE_ENV'))
+                                                 env=app.config.get('STATIC_BUNDLE_ENV'),
+                                                 url_prefix=app.config.get('STATIC_BUNDLE_URL_PREFIX', '/static/'))
 
 
 class StaticManager(object):
@@ -34,8 +35,9 @@ class StaticManager(object):
 
     def init_rewrite(self):
         app = self.app
-        rewrite_path = app.config.get("STATIC_BUNDLE_REWRITE_PATH", "static")
+        rewrite_path = app.config.get('STATIC_BUNDLE_URL_PREFIX', '/static/')
         if app.config.get('STATIC_BUNDLE_REWRITE', False):
+            assert rewrite_path != '' and rewrite_path != '/', "Can't rewrite global paths"
             from flask.helpers import send_from_directory
 
             if app.config.get('STATIC_BUNDLE_ENV') == 'production':
@@ -45,11 +47,10 @@ class StaticManager(object):
             else:
                 static_path = app.config.get('STATIC_BUNDLE_INPUT_PATH')
                 assert static_path, 'Option INPUT_PATH is required for static rewrite in development environment';
-
-            @app.route('/' + rewrite_path + '/<path:filename>')
+            @app.route(rewrite_path + '<path:filename>')
             def rewrite_static(filename):
                 cache_timeout = app.get_send_file_max_age(filename)
-                return send_from_directory(BuilderConfig.init_path(os.path.join(static_path, rewrite_path)), filename,
+                return send_from_directory(BuilderConfig.init_path(static_path), filename,
                                            cache_timeout=cache_timeout)
 
     @property

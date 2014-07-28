@@ -1,22 +1,19 @@
 # encoding: utf-8
 
 from __future__ import absolute_import
+
 import sys
-import os
-
-# for testing
-
-PACKAGE_ROOT = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
-sys.path.append(PACKAGE_ROOT)
-
 from flask import Flask
+
 
 class ProdConf:
     DEBUG = False
     STATIC_BUNDLE_INPUT_PATH = "public/src"
     STATIC_BUNDLE_OUTPUT_PATH = "public/build"
     STATIC_BUNDLE_ENV = "production"
-    STATIC_BUNDLE_REWRITE = False
+
+    # not recommend in production
+    STATIC_BUNDLE_REWRITE = True
 
 
 class DevConf(ProdConf):
