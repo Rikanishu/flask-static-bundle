@@ -1,6 +1,5 @@
 # encoding: utf-8
 
-import os
 from static_bundle import StandardBuilder
 from static_bundle import BuilderConfig
 
@@ -32,6 +31,7 @@ class StaticManager(object):
     def __init__(self, app):
         self.app = app
         self.init_rewrite()
+        self.init_template_extension()
 
     def init_rewrite(self):
         app = self.app
@@ -52,6 +52,9 @@ class StaticManager(object):
                 cache_timeout = app.get_send_file_max_age(filename)
                 return send_from_directory(BuilderConfig.init_path(static_path), filename,
                                            cache_timeout=cache_timeout)
+
+    def init_template_extension(self):
+        self.app.jinja_options['extensions'].append('flask.ext.static_bundle.AssetTemplateExtension')
 
     @property
     def builder_config(self):

@@ -2,9 +2,11 @@
 
 from __future__ import absolute_import
 
-from flask_static_bundle.flask_ext_static_bundle import FlaskBuilderConfig, StaticManager
+from flask_static_bundle.ext import FlaskBuilderConfig, StaticManager
+from flask_static_bundle.template import AssetTemplateExtension
 
 __all__ = [
     'FlaskBuilderConfig',
-    'StaticManager'
+    'StaticManager',
+    'AssetTemplateExtension'
 ]

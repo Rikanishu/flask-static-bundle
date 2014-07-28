@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Flask Static Example</title>
-    {{statics.render_asset("Styles")|safe}}
+    {% asset statics, "Styles" %}
 </head>
 <body>
 <div class="page-content">
@@ -21,7 +21,7 @@
     <p>Try to run another environment: <i>python run.py production</i> or <i>python run.py development</i></p>
     <p>Don't forget run <i>python collectstatic.py production</i> before production env test</p>
 </div>
-{{statics.render_asset("Vendors")|safe}}
-{{statics.render_asset("Application")|safe}}
+{% asset statics, "Vendors" %}
+{% asset statics, "Application" %}
 </body>
 </html>
