@@ -17,7 +17,8 @@ class FlaskBuilderConfig(BuilderConfig):
         super(FlaskBuilderConfig, self).__init__(input_dir=app.config.get('STATIC_BUNDLE_INPUT_PATH'),
                                                  output_dir=app.config.get('STATIC_BUNDLE_OUTPUT_PATH'),
                                                  env=app.config.get('STATIC_BUNDLE_ENV'),
-                                                 url_prefix=app.config.get('STATIC_BUNDLE_URL_PREFIX', '/static/'))
+                                                 url_prefix=app.config.get('STATIC_BUNDLE_URL_PREFIX', '/static/'),
+                                                 copy_only_bundles=app.config.get('STATIC_BUNDLE_COPY_ONLY_BUNDLES', False))
 
 
 class StaticManager(object):
