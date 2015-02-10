@@ -4,7 +4,7 @@ from distutils.core import setup
 
 setup(
     name='flask-static-bundle',
-    version='0.1.2',
+    version='0.1.3',
     packages=['flask_static_bundle'],
     install_requires=['Flask', 'static-bundle'],
     author='Rikanishu',
